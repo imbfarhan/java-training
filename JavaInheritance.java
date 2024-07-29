@@ -30,15 +30,30 @@ class DerivedClass extends BaseClass{
     }
 }
 
+class DerivedDerivedClass extends DerivedClass
+{
+    int derivedDerivedNum;
+    DerivedDerivedClass()
+    {
+        this.derivedDerivedNum=2;
+    }
+    DerivedDerivedClass(int base,int derived,int derivedderived)
+    {
+        super(base,derived);
+        this.derivedDerivedNum=derivedderived;
+    }
+}
 
 public class JavaInheritance {
     public static void main(String[] args) {
         DerivedClass d1 = new DerivedClass();
         DerivedClass d2 = new DerivedClass(10,20);
         DerivedClass d3 = new DerivedClass(30);
+        DerivedDerivedClass dd1 = new DerivedDerivedClass(100,200,300);
         System.out.println(d1.baseNum);
         System.out.println(d2.baseNum);
         System.out.println(d3.baseNum);
+        System.out.println(dd1.baseNum);
 
     }
 }
