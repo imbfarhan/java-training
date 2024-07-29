@@ -1,12 +1,10 @@
-import java.util.Scanner;
-
 public class JavaStrings{
     public static void main(String[] args) {
         //NOTE: STRINGS ARE IMMUTABLE.
         //String methods always return a new string.
         //Running only a method on a string will not change the string. e.g: only name.toUpperCase() will not make name uppercase.
         String s = new String("Farhan");
-        String name = "Harry";
+        String name = "Harry"+s;
 
         //length() : Finding length of string
         System.out.println(name.length());
