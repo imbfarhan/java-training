@@ -7,6 +7,7 @@
 7. Method Overloading+Overriding
 8. Dynamic Method Dispatch
 9. Abstract Classes
+10. Interfaces + Interfaces Inheritance(w/ default) 
 
 Tasks:
 Rock Paper Scissor
