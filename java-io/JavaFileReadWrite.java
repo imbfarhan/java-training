@@ -6,6 +6,27 @@ import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/* TODO
+Delete a File: Allow the user to delete a specified file.
+
+Append to a File: Provide an option to append text to the file without creating a new line each time.
+
+Clear File Contents: Clear all contents of the current file.
+
+Rename a File: Allow the user to rename the current file.
+
+Display File Info: Show detailed information about the file, such as its size, last modified date, etc.
+
+Search within a File: Allow the user to search for specific text within the current file.
+
+Copy File Content: Copy the contents of one file to another file.
+
+Move a File: Allow the user to move the file to a different directory.
+
+Change Directory: Change the working directory for file operations.
+ */
+
+
 public class JavaFileReadWrite {
     FileWriter fw;
     BufferedReader fr;
@@ -57,12 +78,21 @@ public class JavaFileReadWrite {
         //Creating a buffered reader to read file line by line
         try{
             this.fr = new BufferedReader(new FileReader(this.fileName+".txt"));
+            if(fr.read()==-1)
+            {
+                System.out.println("The file that you specified is empty");
+            }
+            else
+            {
+                this.fr = new BufferedReader(new FileReader(this.fileName+".txt"));
+                System.out.println("\n\t--FILE CONTENTS--");
+            }
         }
         catch(IOException e)
         {
             System.out.println("IO Exception");
         }
-
+        
         //Read each line of the file
         while(true)
         {
@@ -179,12 +209,13 @@ public class JavaFileReadWrite {
         
         while(true)
         {
-            System.out.println("\nSelect an operation");
+            System.out.println("\n<---- SELECT AN OPERATION ---->");
             System.out.println("1: Write to file");
             System.out.println("2: Read from file");
             System.out.println("3: Change selected file");
             System.out.println("4: Show available text files");
             System.out.println("5: Exit");
+            System.out.print("Enter your choice:");
             try{
                 userChoice=sc.nextInt();
             }
@@ -199,7 +230,7 @@ public class JavaFileReadWrite {
             }
                 if(userChoice<1 || userChoice>5)
                 {
-                    System.out.println("Please enter a valid choice");
+                    System.out.println("Please enter a valid choice!");
                     continue;
                 }
                 switch(userChoice)
@@ -209,7 +240,6 @@ public class JavaFileReadWrite {
                     break;
 
                     case 2:
-                    System.out.println("\n\t--FILE CONTENTS--");
                     frw.readFile();
                     break;
                     
