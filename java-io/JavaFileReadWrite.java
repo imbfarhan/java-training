@@ -28,6 +28,28 @@ public class JavaFileReadWrite {
 
     }
 
+    static void showAvailableFiles()
+    {
+        String currentDirectory = System.getProperty("user.dir");
+        File directory = new File(currentDirectory);
+
+        //Filter to select only .txt files using lambda expression
+        File[] files = directory.listFiles((dir,name)->name.toLowerCase().endsWith(".txt"));
+
+        if(files != null && files.length>0)
+        {
+            System.out.println("Available Files:");
+            for(File file:files)
+            {
+                System.out.println(file.getName());
+            }
+        }
+        else
+        {
+            System.out.println("No text files found");
+        }
+    }
+
     void readFile()
     {
         String line;
@@ -89,6 +111,50 @@ public class JavaFileReadWrite {
             System.out.println("IO Exception Occured");
         }
     }
+
+    void changeFile()
+    {
+        String fileName = new String();
+        System.out.println("Enter name of the file to switch to:");
+        
+        @SuppressWarnings("resource")
+        Scanner sc = new Scanner(System.in);
+        fileName = sc.nextLine();
+        try{
+            File createFile = new File(fileName+".txt");
+            if(!createFile.exists()) //If the file does not exist
+            {
+                System.out.println("The specified file does not exist. Do you want to create it? (Y/N)");
+                
+                while(true)
+                {
+                    @SuppressWarnings("resource")
+                    Scanner s = new Scanner(System.in);
+                    String userChoice = new String();
+                    userChoice = s.nextLine();
+                    if(!userChoice.equalsIgnoreCase("y") && !userChoice.equalsIgnoreCase("n"))
+                    {
+                        System.out.println("Please enter a valid choice!");
+                        continue;
+                    }
+                    else if(userChoice.equalsIgnoreCase("y"))
+                    {
+                        createFile.createNewFile();
+                        break;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }    
+            }
+        }
+        catch(IOException e)
+        {
+            System.out.println("Could not create file!");
+        }
+        this.fileName = fileName;
+    }
     
     
     public static void main(String[] args) 
@@ -116,7 +182,9 @@ public class JavaFileReadWrite {
             System.out.println("\nSelect an operation");
             System.out.println("1: Write to file");
             System.out.println("2: Read from file");
-            System.out.println("3: Exit");
+            System.out.println("3: Change selected file");
+            System.out.println("4: Show available text files");
+            System.out.println("5: Exit");
             try{
                 userChoice=sc.nextInt();
             }
@@ -129,7 +197,7 @@ public class JavaFileReadWrite {
 
                 continue;
             }
-                if(userChoice<1 || userChoice>3)
+                if(userChoice<1 || userChoice>5)
                 {
                     System.out.println("Please enter a valid choice");
                     continue;
@@ -144,8 +212,16 @@ public class JavaFileReadWrite {
                     System.out.println("\n\t--FILE CONTENTS--");
                     frw.readFile();
                     break;
-
+                    
                     case 3:
+                    frw.changeFile();
+                    break;
+
+                    case 4:
+                    JavaFileReadWrite.showAvailableFiles();
+                    break;
+
+                    case 5:
                     sc.close();
                     System.exit(1);
                 }
