@@ -10,7 +10,7 @@
 /*-- Multiple inheritance is not supported in Java --
 REASON: Mostly due to the problem of superclasses having same method name
 Indirectly, it is allowed using interfaces
-A class can extend another class an implement an interface
+A class can extend another class and implement an interface
 */
 
 interface Bicycle{
