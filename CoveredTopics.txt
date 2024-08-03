@@ -9,7 +9,7 @@
 9. Abstract Classes
 10. Interfaces + Interfaces Inheritance(w/ default)
 11. Packages and Access Modifiers
-12. Collections -> ArrayList 
+12. Collections -> ArrayList, LinkedList, HashMap
 
 Tasks:
 Rock Paper Scissor
