@@ -10,6 +10,8 @@
 10. Interfaces + Interfaces Inheritance(w/ default)
 11. Packages and Access Modifiers
 12. Collections -> ArrayList, LinkedList, HashMap, HashSet
+13. Anonymous Classes
+14. Lambda Expressions
 
 Tasks:
 Rock Paper Scissor
